@@ -45,7 +45,7 @@ async def makecloud():
 async def getciyun(bot,ev):
     if not hoshino.priv.check_priv(ev, hoshino.priv.SUPERUSER):
         return
-    await bot.send(ev,message = 'bns',at_sender = True)
+    await bot.send(ev,message = 'execute',at_sender = True)
     makeclouds()
 
 
