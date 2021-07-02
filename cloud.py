@@ -15,7 +15,7 @@ import os
 
 sv = Service('wordcloud', enable_on_default=False)
 
-loadpath = ''#此处填gocq的data路径
+loadpath = ''#此处填gocq的logs路径
 self_id = ''#此处填机器人的QQ号
 load_in_path = ''#此处填词云图片保存的路径
 
@@ -54,7 +54,7 @@ def makeclouds():
     global loadpath
     bot = nonebot.get_bot()
     today = datetime.date.today().__format__('%Y-%m-%d')
-    f = open(loadpath + f"\\gocq\\logs\\{today}.log", "r", encoding="utf-8")
+    f = open(loadpath + f"\\{today}.log", "r", encoding="utf-8")
     f.seek(0)
     msg=''
     for line in f.readlines():          #删除前缀和自己的发言
