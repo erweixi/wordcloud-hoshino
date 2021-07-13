@@ -9,7 +9,7 @@
 4.对指令，单字，语气词进行剔除，如需增加不需要的词汇请在tyc.txt自己新开一行加<br> 
 使用前请先确保你的gocq版本允许保存聊天记录（info)<br> 
 并安装wordcloud库和jieba库<br>
-##部署方法<br>
+## 部署方法<br>
 1.新建一个文件夹wordcloud在里面`git clone https://github.com/othinus001/wordcloud-hoshino.git`<br>
 2.修改里面路径和QQ号<br>
 3.将tyc.txt和ttf字体文件丢进load_path并安装字体<br> 
