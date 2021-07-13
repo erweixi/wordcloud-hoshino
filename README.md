@@ -1,5 +1,5 @@
 # wordcloud-hoshino
-[原项目链接](https://github.com/erweixi/wordcloud-hoshino7)<br> 
+[原项目链接](https://github.com/erweixi/wordcloud-hoshino)<br> 
 不知道为啥老装不好，所以自己改来改去总算勉强能用，仅做一些小小的改动<br> 
 没学过python仅靠Java的知识捣鼓，能用已经很好了<br> 
 指令 `生成今日词云` `生成昨日词云`<br> 
