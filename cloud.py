@@ -36,7 +36,7 @@ async def makecloud():
 
 @sv.on_fullmatch('生成今日词云')
 async def getciyun(bot, ev: CQEvent):
-    if not hoshino.priv.check_priv(ev, hoshino.priv.SUPERUSER or hoshino.priv.OWNER):
+    if not hoshino.priv.check_priv(ev, hoshino.priv.OWNER):
         await bot.send(ev,message = '仅限群主可用',at_sender = True)
         return
     await bot.send(ev,message = '正在生成本群今日词云，请耐心等待',at_sender = True)
@@ -48,7 +48,7 @@ async def getciyun(bot, ev: CQEvent):
 
 @sv.on_fullmatch('生成昨日词云')
 async def getciyunb(bot, ev: CQEvent):
-    if not hoshino.priv.check_priv(ev, hoshino.priv.SUPERUSER or hoshino.priv.OWNER):
+    if not hoshino.priv.check_priv(ev, hoshino.priv.OWNER):
         await bot.send(ev,message = '仅限群主可用',at_sender = True)
         return
     await bot.send(ev,message = '正在生成本群昨日词云，请耐心等待',at_sender = True)
