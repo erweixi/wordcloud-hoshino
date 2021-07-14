@@ -12,7 +12,6 @@ import numpy as np
 import datetime
 import shutil
 import os
-import matplotlib.pyplot as plt
 
 sv = Service('wordcloud', enable_on_default=True)
 
