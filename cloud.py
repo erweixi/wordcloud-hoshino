@@ -33,6 +33,13 @@ async def makecloud():
     except Exception as e:
         today = datetime.date.today().__format__('%Y-%m-%d')
         await bot.send_private_msg(user_id=hoshino.config.SUPERUSERS[2], message=f'{today}词云生成失败,失败原因:{e}')
+        
+@sv.on_rex(f'^查询(.*)月(\d+)日词云$')
+async def ciyun(bot, ev: CQEvent):
+    match = ev['match']
+    month = int(match.group(1))
+    day = int(match.group(2))
+    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//2021-{month:02}-{day:02}.png'))
 
 @sv.on_fullmatch('生成今日词云')
 async def getciyun(bot, ev: CQEvent):
