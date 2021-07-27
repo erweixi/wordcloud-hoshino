@@ -4,7 +4,7 @@
 指令`查询某月某日词云`可以查询全服词云
 可以查询单独群内的词云也可以查询公共的词云<br> 
 对指令，单字，语气词进行剔除，如需增加不需要的词汇请在tyc.txt自己新开一行加<br> 
-使用前请先确保你的gocq版本允许保存聊天记录（info)<br> 
+使用前请先确保你的gocq允许保存聊天记录（info)<br> 
 并安装wordcloud库和jieba库<br>
 ## 部署方法<br>
 1.新建一个文件夹wordcloud在里面`git clone https://github.com/erweixi/wordcloud-hoshino.git`<br>
