@@ -97,11 +97,19 @@ def makeclouds(gid):
         )
     w.generate(txt)
     w.to_file(f"{today}.png")
-    try:
-        shutil.move(f"{today}.png",load_in_path)
-    except:
-        os.remove(load_in_path+f"\\{today}.png")
-        shutil.move(f"{today}.png",load_in_path)
+    if gid:
+        try:
+            shutil.move(f"{today}-{gid}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{today}-{gid}.png")
+            shutil.move(f"{today}-{gid}.png",load_in_path)
+    else:
+        try:
+            shutil.move(f"{today}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{today}.png")
+            shutil.move(f"{today}.png",load_in_path)
+        
         
 def makecloudsb(gid):
     global loadpath
@@ -136,8 +144,15 @@ def makecloudsb(gid):
         )
     w.generate(txt)
     w.to_file(f"{yesterday}.png")
-    try:
-        shutil.move(f"{yesterday}.png",load_in_path)
-    except:
-        os.remove(load_in_path+f"\\{yesterday}.png")
-        shutil.move(f"{yesterday}.png",load_in_path)
+    if gid:
+        try:
+            shutil.move(f"{yesterday}-{gid}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{yesterday}-{gid}.png")
+            shutil.move(f"{yesterday}-{gid}.png",load_in_path)
+    else:
+        try:
+            shutil.move(f"{yesterday}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{yesterday}.png")
+            shutil.move(f"{yesterday}.png",load_in_path)
