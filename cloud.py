@@ -43,7 +43,7 @@ async def getciyun(bot, ev: CQEvent):
     gid = ev.group_id
     makeclouds(gid)
     today = datetime.date.today().__format__('%Y-%m-%d')
-    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{today}.png'))
+    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{today}-{gid}.png'))
 
 
 @sv.on_fullmatch('生成昨日词云')
@@ -55,7 +55,7 @@ async def getciyunb(bot, ev: CQEvent):
     gid = ev.group_id
     makecloudsb(gid)
     yesterday = (datetime.date.today() + datetime.timedelta(-1)).__format__('%Y-%m-%d')
-    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{yesterday}.png'))
+    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{yesterday}-{gid}.png'))
     
 def random_color_func(word=None, font_size=None, position=None,
                       orientation=None, font_path=None, random_state=None):
