@@ -33,6 +33,13 @@ async def makecloud():
     except Exception as e:
         today = datetime.date.today().__format__('%Y-%m-%d')
         await bot.send_private_msg(user_id=hoshino.config.SUPERUSERS[2], message=f'{today}词云生成失败,失败原因:{e}')
+        
+@sv.on_rex(f'^查询(.*)月(\d+)日词云$')
+async def ciyun(bot, ev: CQEvent):
+    match = ev['match']
+    month = int(match.group(1))
+    day = int(match.group(2))
+    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//2021-{month:02}-{day:02}.png'))
 
 @sv.on_fullmatch('生成今日词云')
 async def getciyun(bot, ev: CQEvent):
@@ -43,7 +50,7 @@ async def getciyun(bot, ev: CQEvent):
     gid = ev.group_id
     makeclouds(gid)
     today = datetime.date.today().__format__('%Y-%m-%d')
-    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{today}.png'))
+    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{today}-{gid}.png'))
 
 
 @sv.on_fullmatch('生成昨日词云')
@@ -55,7 +62,7 @@ async def getciyunb(bot, ev: CQEvent):
     gid = ev.group_id
     makecloudsb(gid)
     yesterday = (datetime.date.today() + datetime.timedelta(-1)).__format__('%Y-%m-%d')
-    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{yesterday}.png'))
+    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//{yesterday}-{gid}.png'))
     
 def random_color_func(word=None, font_size=None, position=None,
                       orientation=None, font_path=None, random_state=None):
@@ -97,11 +104,19 @@ def makeclouds(gid):
         )
     w.generate(txt)
     w.to_file(f"{today}.png")
-    try:
-        shutil.move(f"{today}.png",load_in_path)
-    except:
-        os.remove(load_in_path+f"\\{today}.png")
-        shutil.move(f"{today}.png",load_in_path)
+    if gid:
+        try:
+            shutil.move(f"{today}-{gid}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{today}-{gid}.png")
+            shutil.move(f"{today}-{gid}.png",load_in_path)
+    else:
+        try:
+            shutil.move(f"{today}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{today}.png")
+            shutil.move(f"{today}.png",load_in_path)
+        
         
 def makecloudsb(gid):
     global loadpath
@@ -136,8 +151,15 @@ def makecloudsb(gid):
         )
     w.generate(txt)
     w.to_file(f"{yesterday}.png")
-    try:
-        shutil.move(f"{yesterday}.png",load_in_path)
-    except:
-        os.remove(load_in_path+f"\\{yesterday}.png")
-        shutil.move(f"{yesterday}.png",load_in_path)
+    if gid:
+        try:
+            shutil.move(f"{yesterday}-{gid}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{yesterday}-{gid}.png")
+            shutil.move(f"{yesterday}-{gid}.png",load_in_path)
+    else:
+        try:
+            shutil.move(f"{yesterday}.png",load_in_path)
+        except:
+            os.remove(load_in_path+f"\\{yesterday}.png")
+            shutil.move(f"{yesterday}.png",load_in_path)
