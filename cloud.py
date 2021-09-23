@@ -70,7 +70,7 @@ def random_color_func(word=None, font_size=None, position=None,
   
     if random_state is None:
         random_state = Random()
-    return "hsl(%d, 75%%, 62%%)" % random_state.randint(0, 225)#值，饱和度，色相
+    return "hsl(%d, 75%%, 62%%)" % random_state.randint(0, 225)#值(最后括号的颜色范围)，饱和度，色相（想自己调颜色风格自己改动，百度hsl）
     
 def makeclouds(gid):
     global loadpath
