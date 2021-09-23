@@ -103,19 +103,13 @@ def makeclouds(gid):
                             color_func=random_color_func#调色
         )
     w.generate(txt)
-    w.to_file(f"{today}.png")
+    w.to_file(f"{today}-{gid}.png")
     if gid:
         try:
             shutil.move(f"{today}-{gid}.png",load_in_path)
         except:
             os.remove(load_in_path+f"\\{today}-{gid}.png")
             shutil.move(f"{today}-{gid}.png",load_in_path)
-    else:
-        try:
-            shutil.move(f"{today}.png",load_in_path)
-        except:
-            os.remove(load_in_path+f"\\{today}.png")
-            shutil.move(f"{today}.png",load_in_path)
         
         
 def makecloudsb(gid):
@@ -150,16 +144,10 @@ def makecloudsb(gid):
                             color_func=random_color_func#词汇上限，宽，高,背景颜色去除停用词(tyc.txt),频次与大小相关度，最小词长,调色
         )
     w.generate(txt)
-    w.to_file(f"{yesterday}.png")
+    w.to_file(f"{yesterday}-{gid}.png")
     if gid:
         try:
             shutil.move(f"{yesterday}-{gid}.png",load_in_path)
         except:
             os.remove(load_in_path+f"\\{yesterday}-{gid}.png")
             shutil.move(f"{yesterday}-{gid}.png",load_in_path)
-    else:
-        try:
-            shutil.move(f"{yesterday}.png",load_in_path)
-        except:
-            os.remove(load_in_path+f"\\{yesterday}.png")
-            shutil.move(f"{yesterday}.png",load_in_path)
