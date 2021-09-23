@@ -37,9 +37,10 @@ async def makecloud():
 @sv.on_rex(f'^查询(.*)月(\d+)日词云$')
 async def ciyun(bot, ev: CQEvent):
     match = ev['match']
+    gid = ev.group_id
     month = int(match.group(1))
     day = int(match.group(2))
-    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//2021-{month:02}-{day:02}.png'))
+    await bot.send(ev,MessageSegment.image(f'file:///{load_in_path}//2021-{month:02}-{day:02}-{gid}.png'))
 
 @sv.on_fullmatch('生成今日词云')
 async def getciyun(bot, ev: CQEvent):
